@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSM CAF – Servizi Multietnici</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+      --primary: #006d5b;
+      --primary-dark: #004d40;
+      --accent: #e67e22;
+      --accent-hover: #d35400;
+      --bg: #f5f3ef;
+      --white: #fff;
+      --text: #2c3e50;
+      --text-light: #6c757d;
+      --border: #e0ddd7;
+      --shadow: 0 2px 15px rgba(0,0,0,0.06);
+      --shadow-hover: 0 8px 30px rgba(0,0,0,0.1);
+      --radius: 14px;
+      --font: 'Segoe UI', system-ui, sans-serif;
+    }
+    html { scroll-behavior:smooth; }
+    body { font-family:var(--font); color:var(--text); background:var(--bg); line-height:1.6; }
+    a { text-decoration:none; color:inherit; }
+    ul { list-style:none; }
+    .container { max-width:1200px; margin:0 auto; padding:0 20px; }
+
+    /* Top bar */
+    .top-bar {
+      background:var(--primary-dark); color:rgba(255,255,255,0.85);
+      padding:8px 0; font-size:0.85rem;
+    }
+    .top-bar .container {
+      display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+    }
+    .top-bar i { color:var(--accent); margin-right:6px; }
+
+    /* Header */
+    .header {
+      background:var(--white); box-shadow:var(--shadow);
+      position:sticky; top:0; z-index:1000; padding:12px 0;
+    }
+    .header .container { display:flex; align-items:center; justify-content:space-between; }
+    .logo {
+      display:flex; align-items:center; gap:10px;
+      font-size:1.5rem; font-weight:800; color:var(--primary);
+    }
+    .logo i { font-size:2rem; color:var(--accent); }
+    .logo small { font-weight:300; font-size:0.85rem; color:var(--text-light); }
+    .nav ul { display:flex; gap:24px; }
+    .nav a {
+      font-weight:600; font-size:0.9rem; position:relative; padding-bottom:4px; transition:color .3s;
+    }
+    .nav a::after {
+      content:''; position:absolute; bottom:0; left:0; width:0; height:2px;
+      background:var(--accent); transition:width .3s;
+    }
+    .nav a:hover { color:var(--accent); }
+    .nav a:hover::after { width:100%; }
+    .lang-switch {
+      display:flex; gap:6px; font-size:0.8rem; font-weight:600;
+    }
+    .lang-switch a {
+      padding:4px 10px; border-radius:20px; border:1px solid var(--border);
+      transition:all .3s;
+    }
+    .lang-switch a.active { background:var(--primary); color:var(--white); border-color:var(--primary); }
+    .lang-switch a:hover { border-color:var(--accent); }
+
+    /* Hero */
+    .hero {
+      background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color:var(--white); padding:70px 0;
+    }
+    .hero .container {
+      display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center;
+    }
+    .hero h1 { font-size:2.5rem; line-height:1.2; margin-bottom:16px; }
+    .hero h1 span { color:var(--accent); }
+    .hero p { font-size:1.05rem; opacity:0.9; margin-bottom:28px; line-height:1.7; }
+    .hero-cta { display:flex; gap:12px; flex-wrap:wrap; }
+    .btn {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:12px 28px; border-radius:50px; font-weight:600; font-size:0.95rem;
+      border:none; cursor:pointer; transition:all .3s;
+    }
+    .btn-primary { background:var(--accent); color:var(--white); }
+    .btn-primary:hover { background:var(--accent-hover); transform:translateY(-2px); box-shadow:0 4px 15px rgba(230,126,34,0.4); }
+    .btn-outline { background:transparent; color:var(--white); border:2px solid rgba(255,255,255,0.5); }
+    .btn-outline:hover { border-color:var(--white); background:rgba(255,255,255,0.1); transform:translateY(-2px); }
+    .btn-whatsapp { background:#25d366; color:var(--white); }
+    .btn-whatsapp:hover { background:#1da851; transform:translateY(-2px); }
+    .btn-lg { padding:16px 40px; font-size:1.05rem; }
+
+    .hero-flags {
+      display:grid; gap:16px;
+    }
+    .hero-flag-card {
+      background:rgba(255,255,255,0.08); backdrop-filter:blur(10px);
+      padding:18px 22px; border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,0.12); transition:all .3s;
+      display:flex; align-items:center; gap:14px;
+    }
+    .hero-flag-card:hover { background:rgba(255,255,255,0.14); transform:translateX(6px); }
+    .hero-flag-card i { font-size:1.5rem; color:var(--accent); width:36px; text-align:center; }
+    .hero-flag-card .fi { font-size:1.8rem; }
+
+    /* Section header */
+    .section-header { text-align:center; margin-bottom:44px; }
+    .section-header h2 { font-size:2rem; color:var(--primary); margin-bottom:10px; }
+    .section-header h2::after {
+      content:''; display:block; width:50px; height:3px; background:var(--accent);
+      margin:12px auto 0; border-radius:2px;
+    }
+    .section-header p { color:var(--text-light); max-width:600px; margin:0 auto; }
+
+    /* Stats */
+    .stats { padding:60px 0; background:var(--white); }
+    .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:30px; }
+    .stat-card {
+      text-align:center; padding:30px 20px; border-radius:var(--radius);
+      background:var(--bg); border:1px solid var(--border); transition:all .3s;
+    }
+    .stat-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-hover); }
+    .stat-card i { font-size:2rem; color:var(--accent); margin-bottom:10px; }
+    .stat-number { font-size:2.6rem; font-weight:800; color:var(--primary); }
+    .stat-label { font-size:0.92rem; color:var(--text-light); }
+
+    /* Servizi */
+    .servizi { padding:80px 0; background:var(--bg); }
+    .servizi-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:24px; }
+    .servizio-card {
+      background:var(--white); padding:28px 22px; border-radius:var(--radius);
+      text-align:center; border:1px solid var(--border);
+      transition:all .3s;
+    }
+    .servizio-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-hover); border-color:var(--primary); }
+    .servizio-card i { font-size:2.2rem; color:var(--accent); margin-bottom:14px; }
+    .servizio-card h3 { font-size:1.05rem; color:var(--primary); margin-bottom:6px; }
+    .servizio-card p { color:var(--text-light); font-size:0.88rem; }
+
+    /* Multiservizi highlight */
+    .multiservizi { padding:80px 0; background:var(--white); }
+    .multiservizi-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:24px; }
+    .ms-card {
+      background:var(--bg); border-radius:var(--radius); padding:28px 20px;
+      text-align:center; border:1px solid var(--border); transition:all .3s;
+    }
+    .ms-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-hover); }
+    .ms-card img { width:56px; height:56px; object-fit:contain; margin-bottom:12px; border-radius:8px; }
+    .ms-card h3 { font-size:1rem; color:var(--primary); margin-bottom:6px; }
+    .ms-card p { font-size:0.88rem; color:var(--text-light); }
+
+    /* Chi Siamo / Team */
+    .team { padding:80px 0; background:var(--bg); }
+    .team-content { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; }
+    .team-text h2 { font-size:2rem; color:var(--primary); margin-bottom:16px; }
+    .team-text h2::after { content:''; display:block; width:50px; height:3px; background:var(--accent); margin-top:10px; border-radius:2px; }
+    .team-text p { margin-bottom:14px; color:var(--text-light); }
+    .team-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--primary); color:var(--white); padding:10px 20px;
+      border-radius:50px; font-weight:600; font-size:0.9rem; margin-top:10px;
+    }
+    .team-badge i { color:var(--accent); }
+
+    /* Sedi */
+    .sedi { padding:80px 0; background:var(--white); }
+    .sedi-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:20px; }
+    .sede-card {
+      background:var(--bg); padding:22px; border-radius:var(--radius);
+      border:1px solid var(--border); transition:all .3s;
+    }
+    .sede-card:hover { transform:translateY(-3px); box-shadow:var(--shadow-hover); }
+    .sede-card h4 { color:var(--primary); margin-bottom:6px; font-size:0.95rem; }
+    .sede-card p { font-size:0.88rem; color:var(--text-light); line-height:1.8; }
+    .sede-card i { color:var(--accent); width:18px; }
+
+    /* Perché scegliere */
+    .perche { padding:80px 0; background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color:var(--white); }
+    .perche-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:24px; }
+    .perche-card {
+      background:rgba(255,255,255,0.08); backdrop-filter:blur(8px);
+      border:1px solid rgba(255,255,255,0.12); padding:24px; border-radius:var(--radius);
+      transition:all .3s;
+    }
+    .perche-card:hover { background:rgba(255,255,255,0.14); transform:translateY(-4px); }
+    .perche-card i { font-size:1.6rem; color:var(--accent); margin-bottom:10px; }
+    .perche-card h3 { font-size:1rem; margin-bottom:6px; }
+    .perche-card p { font-size:0.88rem; opacity:0.85; }
+
+    /* Contatti */
+    .contatti { padding:80px 0; background:var(--bg); }
+    .contatti-grid { display:grid; grid-template-columns:0.9fr 1.1fr; gap:50px; align-items:start; }
+    .contatti-info h2 { font-size:2rem; color:var(--primary); margin-bottom:14px; }
+    .contatti-info > p { color:var(--text-light); margin-bottom:24px; }
+    .contatti-details li {
+      display:flex; align-items:center; gap:12px; margin-bottom:14px; font-size:0.95rem;
+    }
+    .contatti-details li i { color:var(--accent); width:20px; }
+    .contatti-form { display:grid; gap:14px; }
+    .contatti-form input,.contatti-form select,.contatti-form textarea {
+      width:100%; padding:14px 16px; border:1px solid var(--border);
+      border-radius:10px; font-family:var(--font); font-size:0.95rem;
+      background:var(--white); transition:border .3s;
+    }
+    .contatti-form input:focus,.contatti-form select:focus,.contatti-form textarea:focus {
+      outline:none; border-color:var(--primary); background:var(--white);
+    }
+    .contatti-form button { justify-content:center; }
+
+    /* Footer */
+    .footer { background:var(--primary-dark); color:rgba(255,255,255,0.85); padding:60px 0 0; }
+    .footer-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:40px; padding-bottom:40px; }
+    .footer-brand .logo { color:var(--white); margin-bottom:14px; }
+    .footer-brand .logo small { color:rgba(255,255,255,0.5); }
+    .footer-brand p { font-size:0.9rem; margin-bottom:16px; line-height:1.7; }
+    .footer-social { display:flex; gap:10px; }
+    .footer-social a {
+      display:flex; align-items:center; justify-content:center;
+      width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,0.1);
+      transition:all .3s;
+    }
+    .footer-social a:hover { background:var(--accent); transform:translateY(-3px); }
+    .footer-col h4 { color:var(--white); font-size:0.95rem; margin-bottom:16px; padding-bottom:6px; position:relative; }
+    .footer-col h4::after { content:''; position:absolute; bottom:0; left:0; width:28px; height:2px; background:var(--accent); }
+    .footer-col ul li { margin-bottom:8px; font-size:0.88rem; }
+    .footer-col ul li a:hover { color:var(--accent); }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,0.1); padding:18px 0; text-align:center; font-size:0.82rem; opacity:0.7; }
+
+    /* WhatsApp float */
+    .wa-float {
+      position:fixed; bottom:24px; right:24px; z-index:999;
+      width:56px; height:56px; background:#25d366; color:var(--white);
+      border-radius:50%; display:flex; align-items:center; justify-content:center;
+      font-size:1.7rem; box-shadow:0 4px 16px rgba(37,211,102,0.4);
+      transition:all .3s;
+    }
+    .wa-float:hover { transform:scale(1.1); box-shadow:0 6px 24px rgba(37,211,102,0.5); }
+
+    /* Back to top */
+    .back-top {
+      position:fixed; bottom:90px; right:24px; z-index:998;
+      width:44px; height:44px; background:var(--accent); color:var(--white);
+      border-radius:50%; display:flex; align-items:center; justify-content:center;
+      font-size:1.1rem; opacity:0; visibility:hidden; transition:all .3s;
+      box-shadow:var(--shadow);
+    }
+    .back-top.visible { opacity:1; visibility:visible; }
+    .back-top:hover { background:var(--accent-hover); transform:translateY(-3px); }
+
+    /* Responsive */
+    @media(max-width:992px){
+      .hero .container { grid-template-columns:1fr; }
+      .hero h1 { font-size:2rem; }
+      .team-content { grid-template-columns:1fr; }
+      .contatti-grid { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:repeat(2,1fr); }
+      .stats-grid { grid-template-columns:repeat(2,1fr); }
+    }
+    @media(max-width:768px){
+      .nav ul { display:none; }
+      .header .container { flex-wrap:wrap; gap:10px; }
+      .stats-grid { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr; }
+      .servizi-grid { grid-template-columns:repeat(2,1fr); }
+    }
+    @media(max-width:480px){
+      .servizi-grid { grid-template-columns:1fr; }
+      .hero-cta { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="container">
+    <span><i class="fas fa-clock"></i> Lun–Ven 09:00–12:30 | 15:00–18:00</span>
+    <span><i class="fas fa-phone-alt"></i> 011.188.50472</span>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <i class="fas fa-globe-europe"></i>
+      <span>GSM <small>CAF</small></span>
+    </a>
+    <nav class="nav">
+      <ul>
+        <li><a href="#servizi">Servizi</a></li>
+        <li><a href="#chi-siamo">Chi Siamo</a></li>
+        <li><a href="#sedi">Sedi</a></li>
+        <li><a href="#contatti">Contatti</a></li>
+      </ul>
+    </nav>
+    <div class="lang-switch">
+      <a href="#" class="active">IT</a>
+      <a href="#">EN</a>
+      <a href="#">FR</a>
+      <a href="#">AR</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div>
+      <h1>Il tuo <span>CAF multietnico</span> a Torino e Asti</h1>
+      <p>Operatori multilingua ti supportano in ogni pratica fiscale, burocratica e previdenziale. Dal 2019 al tuo fianco.</p>
+      <div class="hero-cta">
+        <a href="#contatti" class="btn btn-primary btn-lg"><i class="fas fa-calendar-check"></i> Prenota appuntamento</a>
+        <a href="#" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Scrivici su WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero-flags">
+      <div class="hero-flag-card"><i class="fas fa-file-invoice"></i> Certificazione ISEE, 730, Modello Unico</div>
+      <div class="hero-flag-card"><i class="fas fa-passport"></i> Sportello immigrazione & Cittadinanza</div>
+      <div class="hero-flag-card"><i class="fas fa-plane"></i> Biglietteria aerea internazionale</div>
+      <div class="hero-flag-card"><i class="fas fa-car"></i> Assicurazioni RCA</div>
+      <div class="hero-flag-card"><i class="fas fa-hand-holding-heart"></i> Pensioni sociali e di vecchiaia</div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <i class="fas fa-calendar-alt"></i>
+        <span class="stat-number" data-target="7">0</span>
+        <span class="stat-label">Anni di esperienza</span>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-file-signature"></i>
+        <span class="stat-number" data-target="8500">0</span>
+        <span class="stat-label">Pratiche svolte</span>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-language"></i>
+        <span class="stat-number" data-target="6">0</span>
+        <span class="stat-label">Lingue parlate</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servizi" class="servizi">
+  <div class="container">
+    <div class="section-header">
+      <h2>I nostri servizi</h2>
+      <p>Dalla dichiarazione dei redditi all'assistenza immigrazione, siamo qui per te.</p>
+    </div>
+    <div class="servizi-grid">
+      <a href="#" class="servizio-card"><i class="fas fa-file-invoice"></i><h3>Modello 730</h3><p>Dichiarazione dei redditi precompilata</p></a>
+      <a href="#" class="servizio-card"><i class="fas fa-file-signature"></i><h3>Modello Unico</h3><p>Per autonomi e imprese</p></a>
+      <a href="#" class="servizio-card"><i class="fas fa-id-card"></i><h3>ISEE</h3><p>Indicatore situazione economica</p></a>
+      <a href="#" class="servizio-card"><i class="fas fa-calculator"></i><h3>Calcolo IMU</h3><p>Imposta municipale sugli immobili</p></a>
+      <a href="#" class="servizio-card"><i class="fas fa-file-contract"></i><h3>Successioni</h3><p>Dichiarazione entro 12 mesi</p></a>
+      <a href="#" class="servizio-card"><i class="fas fa-file-pdf"></i><h3>Modelli INPS</h3><p>RED e Accertamento As/Ps</p></a>
+      <a href="#" class="servizio-card"><i class="fas fa-hands-helping"></i><h3>COLF e Badanti</h3><p>Contratti e contributi</p></a>
+      <a href="#" class="servizio-card"><i class="fas fa-passport"></i><h3>Immigrazione</h3><p>Permessi, cittadinanza, ricongiungimenti</p></a>
+      <a href="#" class="servizio-card"><i class="fas fa-plane"></i><h3>Biglietteria Aerea</h3><p>Voli internazionali</p></a>
+      <a href="#" class="servizio-card"><i class="fas fa-car"></i><h3>Assicurazioni RCA</h3><p>Proteggi la tua auto</p></a>
+      <a href="#" class="servizio-card"><i class="fas fa-hand-holding-heart"></i><h3>Pensioni</h3><p>Sociali, vecchiaia, reversibilità</p></a>
+      <a href="#" class="servizio-card"><i class="fas fa-gavel"></i><h3>Sportello Legale</h3><p>Ricorso asilo politico</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="multiservizi">
+  <div class="container">
+    <div class="section-header">
+      <h2>Multiservizi</h2>
+      <p>Un unico punto di riferimento per tutte le tue esigenze.</p>
+    </div>
+    <div class="multiservizi-grid">
+      <div class="ms-card">
+        <i class="fas fa-plane" style="font-size:2.4rem;color:var(--accent);"></i>
+        <h3>Biglietteria Aerea</h3>
+        <p>Prenota i tuoi voli con facilità, tariffe competitive per tutto il mondo.</p>
+      </div>
+      <div class="ms-card">
+        <i class="fas fa-car" style="font-size:2.4rem;color:var(--accent);"></i>
+        <h3>Assicurazioni RCA</h3>
+        <p>Proteggi te e la tua auto con le migliori polizze.</p>
+      </div>
+      <div class="ms-card">
+        <i class="fas fa-gavel" style="font-size:2.4rem;color:var(--accent);"></i>
+        <h3>Sportello Immigrazione</h3>
+        <p>Assistenza legale per pratiche di immigrazione e asilo.</p>
+      </div>
+      <div class="ms-card">
+        <i class="fas fa-hand-holding-heart" style="font-size:2.4rem;color:var(--accent);"></i>
+        <h3>Pensioni</h3>
+        <p>Consulenze su pensioni sociali, vecchiaia e anticipate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="chi-siamo" class="team">
+  <div class="container">
+    <div class="team-content">
+      <div class="team-text">
+        <h2>Chi Siamo</h2>
+        <p><strong>GSM – Gruppo di Servizi Multietnici</strong> nasce con la missione di supportare cittadini italiani e stranieri in ogni pratica burocratica e fiscale.</p>
+        <p>Dal <strong>2019</strong> operiamo a <strong>Torino</strong> con un team di operatori <strong>multilingua</strong> (italiano, inglese, francese, arabo, rumeno, spagnolo) per abbattere ogni barriera linguistica.</p>
+        <p>Offriamo servizi che spaziano dal supporto fiscale e previdenziale alle consulenze legali e assicurative, con attenzione alla <strong>multiculturalità</strong> e all'<strong>inclusione</strong>.</p>
+        <div class="team-badge">
+          <i class="fas fa-language"></i> Operatori multilingua
+        </div>
+      </div>
+      <div style="display:grid;gap:16px;">
+        <div style="background:var(--white);border-radius:var(--radius);padding:24px;border:1px solid var(--border);box-shadow:var(--shadow);">
+          <i class="fas fa-users" style="font-size:2rem;color:var(--accent);margin-bottom:10px;display:block;"></i>
+          <h3 style="color:var(--primary);margin-bottom:6px;">Personale qualificato</h3>
+          <p style="color:var(--text-light);font-size:0.92rem;">Operatori madrelingua formati per assisterti in tutte le pratiche con professionalità e competenza.</p>
+        </div>
+        <div style="background:var(--white);border-radius:var(--radius);padding:24px;border:1px solid var(--border);box-shadow:var(--shadow);">
+          <i class="fas fa-handshake" style="font-size:2rem;color:var(--accent);margin-bottom:10px;display:block;"></i>
+          <h3 style="color:var(--primary);margin-bottom:6px;">Affidabilità e trasparenza</h3>
+          <p style="color:var(--text-light);font-size:0.92rem;">Oltre 8.500 pratiche gestite con serietà e trasparenza. Il tuo sorriso è la nostra migliore referenza.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sedi" class="sedi">
+  <div class="container">
+    <div class="section-header">
+      <h2>Le nostre sedi</h2>
+      <p>Siamo presenti a Torino e Asti con 6 sedi operative.</p>
+    </div>
+    <div class="sedi-grid">
+      <div class="sede-card">
+        <h4><i class="fas fa-map-marker-alt"></i> Sede Centrale – San Donato</h4>
+        <p><i class="fas fa-location-dot"></i> Via San Donato, 45 – 10144 Torino<br><i class="fas fa-phone"></i> 011.188.50472<br><i class="fas fa-mobile-alt"></i> 375.514.8250</p>
+      </div>
+      <div class="sede-card">
+        <h4><i class="fas fa-map-marker-alt"></i> Cigna</h4>
+        <p><i class="fas fa-location-dot"></i> Via Francesco Cigna, 140/A – 10155 Torino<br><i class="fas fa-phone"></i> 011.197.11043<br><i class="fas fa-mobile-alt"></i> 351.617.0920</p>
+      </div>
+      <div class="sede-card">
+        <h4><i class="fas fa-map-marker-alt"></i> Paoli</h4>
+        <p><i class="fas fa-location-dot"></i> Via Pasquale Paoli, 34/A – 10134 Torino<br><i class="fas fa-phone"></i> 011.086.6608<br><i class="fas fa-mobile-alt"></i> 334.753.3471</p>
+      </div>
+      <div class="sede-card">
+        <h4><i class="fas fa-map-marker-alt"></i> Pomaretto</h4>
+        <p><i class="fas fa-location-dot"></i> Via Pomaretto, 4/B – 10135 Torino<br><i class="fas fa-phone"></i> 011.086.8204<br><i class="fas fa-mobile-alt"></i> 351.353.6033</p>
+      </div>
+      <div class="sede-card">
+        <h4><i class="fas fa-map-marker-alt"></i> Gorizia</h4>
+        <p><i class="fas fa-location-dot"></i> Via Gorizia, 53 – 10136 Torino<br><i class="fas fa-phone"></i> 011.037.5313<br><i class="fas fa-mobile-alt"></i> 375.909.4246</p>
+      </div>
+      <div class="sede-card">
+        <h4><i class="fas fa-map-marker-alt"></i> Asti</h4>
+        <p><i class="fas fa-location-dot"></i> Corso Matteotti, 23-25 – 14100 Asti<br><i class="fas fa-phone"></i> 0141.090.643<br><i class="fas fa-mobile-alt"></i> 376.248.5714</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="perche">
+  <div class="container">
+    <div class="section-header" style="color:var(--white);">
+      <h2 style="color:var(--white);">Perché sceglierci</h2>
+      <p style="color:rgba(255,255,255,0.8);">Competenza, multiculturalità e vicinanza al cittadino.</p>
+    </div>
+    <div class="perche-grid">
+      <div class="perche-card"><i class="fas fa-language"></i><h3>Team multilingua</h3><p>Assistenza in italiano, inglese, francese, arabo, rumeno, spagnolo.</p></div>
+      <div class="perche-card"><i class="fas fa-location-dot"></i><h3>6 sedi</h3><p>Presenti a Torino e Asti, sempre vicini a te.</p></div>
+      <div class="perche-card"><i class="fas fa-star"></i><h3>Esperienza</h3><p>Dal 2019 con migliaia di pratiche gestite con successo.</p></div>
+      <div class="perche-card"><i class="fas fa-hand-holding-heart"></i><h3>Assistenza completa</h3><p>Dai bonus fiscali all'immigrazione, un unico interlocutore.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contatti" class="contatti">
+  <div class="container">
+    <div class="contatti-grid">
+      <div class="contatti-info">
+        <h2>Contattaci</h2>
+        <p>Compila il modulo o contattaci direttamente, ti risponderemo al più presto.</p>
+        <ul class="contatti-details">
+          <li><i class="fas fa-map-marker-alt"></i> Via San Donato, 45 – 10144 Torino</li>
+          <li><i class="fas fa-phone-alt"></i> 011.188.50472 / 375.514.8250</li>
+          <li><i class="fas fa-envelope"></i> info@grupposervizimultietnici.com</li>
+          <li><i class="fas fa-clock"></i> Lun–Ven: 09:00–12:30 | 15:00–18:00</li>
+        </ul>
+        <a href="#" class="btn btn-whatsapp" style="margin-top:16px;"><i class="fab fa-whatsapp"></i> Scrivici su WhatsApp</a>
+      </div>
+      <form class="contatti-form" id="contactForm">
+        <input type="text" placeholder="Nome e Cognome" required>
+        <input type="email" placeholder="Email" required>
+        <input type="tel" placeholder="Telefono">
+        <input type="text" placeholder="Nazionalità (opzionale)">
+        <select required>
+          <option value="">Seleziona un servizio</option>
+          <option>Modello 730</option>
+          <option>Modello Unico</option>
+          <option>ISEE</option>
+          <option>Successione</option>
+          <option>Immigrazione / Cittadinanza</option>
+          <option>Biglietteria Aerea</option>
+          <option>Assicurazioni RCA</option>
+          <option>Pensioni</option>
+          <option>Altro</option>
+        </select>
+        <textarea placeholder="Il tuo messaggio..." rows="4" required></textarea>
+        <button type="submit" class="btn btn-primary">Invia messaggio</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <i class="fas fa-globe-europe"></i>
+          <span>GSM <small>CAF</small></span>
+        </a>
+        <p>Gruppo di Servizi Multietnici – il tuo partner fiscale e burocratico multilingua a Torino e Asti.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Servizi CAF</h4>
+        <ul>
+          <li><a href="#">Modello 730</a></li>
+          <li><a href="#">ISEE</a></li>
+          <li><a href="#">Modello Unico</a></li>
+          <li><a href="#">IMU</a></li>
+          <li><a href="#">Successioni</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Multiservizi</h4>
+        <ul>
+          <li><a href="#">Biglietteria Aerea</a></li>
+          <li><a href="#">Assicurazioni RCA</a></li>
+          <li><a href="#">Sportello Immigrazione</a></li>
+          <li><a href="#">Pensioni</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contatti</h4>
+        <ul>
+          <li>Via San Donato, 45</li>
+          <li>10144 Torino</li>
+          <li>011.188.50472</li>
+          <li>info@gsm.it</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 G.S.M. MULTISERVIZI – P.IVA 09996460011 – Tutti i diritti riservati</p>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="wa-float" title="Scrivici su WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a href="#" class="back-top" id="backTop"><i class="fas fa-chevron-up"></i></a>
+
+<script>
+  // Counters
+  document.querySelectorAll('.stat-number').forEach(el => {
+    const target = parseInt(el.dataset.target);
+    const duration = 1500;
+    const step = Math.ceil(target / (duration / 16));
+    let current = 0;
+    const update = () => {
+      current += step;
+      if (current >= target) { el.textContent = target + '+'; return; }
+      el.textContent = current;
+      requestAnimationFrame(update);
+    };
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { update(); obs.unobserve(el); }
+    }, { threshold: 0.5 });
+    obs.observe(el);
+  });
+
+  // Back to top
+  const bt = document.getElementById('backTop');
+  window.addEventListener('scroll', () => bt.classList.toggle('visible', window.scrollY > 400));
+  bt.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+  // Form
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('button');
+    btn.textContent = 'Messaggio inviato ✓';
+    btn.style.background = '#27ae60';
+    setTimeout(() => { btn.textContent = 'Invia messaggio'; btn.style.background = ''; this.reset(); }, 3000);
+  });
+</script>
+</body>
+</html>
