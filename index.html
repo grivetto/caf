@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="CAF Italia - Centro di Assistenza Fiscale. Tre versioni del sito: classica, multietnica, istituzionale.">
-  <title>CAF Italia – Seleziona versione</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>CAF Italia – Seleziona Stile</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
@@ -14,53 +13,54 @@
       color:#fff; min-height:100vh; display:flex; align-items:center;
     }
     .container { max-width:960px; margin:0 auto; padding:40px 20px; text-align:center; }
-    h1 { font-size:2.6rem; margin-bottom:8px; }
-    h1 i { color:#e67e22; }
+    h1 { font-size:2.6rem; margin-bottom:8px; letter-spacing:-0.5px; }
+    h1 .accent { color:#e67e22; }
+    h1 small { display:block; font-size:1rem; font-weight:400; opacity:0.7; margin-top:4px; }
     p { font-size:1.1rem; opacity:0.85; margin-bottom:44px; }
     .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
     .card {
       background:rgba(255,255,255,0.08); backdrop-filter:blur(12px);
-      border:1px solid rgba(255,255,255,0.15); border-radius:16px;
-      padding:36px 24px; transition:all .3s; cursor:pointer;
+      border:1px solid rgba(255,255,255,0.15); border-radius:20px;
+      padding:40px 24px; transition:all .35s; cursor:pointer;
       text-decoration:none; color:#fff;
     }
-    .card:hover { transform:translateY(-8px); background:rgba(255,255,255,0.14); box-shadow:0 16px 40px rgba(0,0,0,0.25); }
-    .card-icon { font-size:2.8rem; color:#e67e22; margin-bottom:16px; }
-    .card h2 { font-size:1.4rem; margin-bottom:8px; }
-    .card p { font-size:0.9rem; opacity:0.75; margin-bottom:20px; }
-    .card .tag {
-      display:inline-block; padding:6px 16px; border-radius:50px;
-      background:rgba(255,255,255,0.12); font-size:0.8rem; font-weight:600;
+    .card:hover { transform:translateY(-10px); background:rgba(255,255,255,0.14); box-shadow:0 20px 50px rgba(0,0,0,0.3); }
+    .card-emoji { font-size:3.2rem; margin-bottom:14px; display:block; }
+    .card h2 { font-size:1.5rem; margin-bottom:8px; }
+    .card p { font-size:0.9rem; opacity:0.7; margin-bottom:0; line-height:1.5; }
+    .bottom { margin-top:44px; font-size:0.85rem; opacity:0.5; }
+    @media(max-width:768px){
+      .grid { grid-template-columns:1fr; gap:16px; }
+      h1 { font-size:2rem; }
+      .card { padding:28px 20px; }
     }
-    .bottom { margin-top:40px; font-size:0.85rem; opacity:0.6; }
-    @media(max-width:768px){ .grid { grid-template-columns:1fr; } h1 { font-size:2rem; } }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1><i class="fas fa-calculator"></i> CAF Italia</h1>
-    <p>Seleziona la versione del sito che preferisci:</p>
+    <h1>
+      Seleziona Stile
+      <small><span class="accent">CAF</span> Italia</small>
+    </h1>
+    <p>Scegli tra i 3 restyling della Gelateria d'Antan</p>
     <div class="grid">
       <a href="index.html" class="card">
-        <div class="card-icon"><i class="fas fa-building"></i></div>
-        <h2>V1 – Classica</h2>
-        <p>Il sito originale. Design professionale blu e arancione. Studio GA, Torino.</p>
-        <span class="tag">Versione 1</span>
+        <span class="card-emoji">&#x2728;</span>
+        <h2>Moderno</h2>
+        <p>Design pulito e professionale. Perfetto per uno studio tradizionale.</p>
       </a>
       <a href="v2.html" class="card">
-        <div class="card-icon"><i class="fas fa-globe-europe"></i></div>
-        <h2>V2 – Multietnica</h2>
-        <p>Ispirato a GSM. Stile caldo, operatori multilingua, 6 sedi, servizi extra (biglietteria, assicurazioni, immigrazione).</p>
-        <span class="tag">Versione 2</span>
+        <span class="card-emoji">&#x1F680;</span>
+        <h2>Futuristico</h2>
+        <p>Stile dinamico, multilingua e multiservizio. Per chi guarda avanti.</p>
       </a>
       <a href="v3.html" class="card">
-        <div class="card-icon"><i class="fas fa-landmark"></i></div>
-        <h2>V3 – Istituzionale</h2>
-        <p>Ispirato a CAF CISL. Look istituzionale, EasyCAF app, numeri verdi, newsletter, blog news.</p>
-        <span class="tag">Versione 3</span>
+        <span class="card-emoji">&#x1F4FA;</span>
+        <h2>Retr&ograve;</h2>
+        <p>Look istituzionale e rassicurante. La tradizione del fisco italiano.</p>
       </a>
     </div>
-    <div class="bottom">Scegli la versione e inizia la navigazione</div>
+    <div class="bottom">Scegli lo stile e inizia la navigazione</div>
   </div>
 </body>
 </html>
