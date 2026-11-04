@@ -173,6 +173,13 @@ const CAF_TRANSLATIONS = {
 };
 
 function getCurrentCafLanguage() {
+  try {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const urlLang = params.get('lang')?.toLowerCase();
+      if (urlLang && CAF_LANG_META[urlLang]) return urlLang;
+    }
+  } catch(e) {}
   const saved = localStorage.getItem('caf_lang');
   if (saved && CAF_LANG_META[saved]) return saved;
   return 'it';
