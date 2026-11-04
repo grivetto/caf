@@ -184,9 +184,9 @@ function applyCafLanguage(lang) {
   document.documentElement.lang = lang;
 
   const meta = CAF_LANG_META[lang];
-  const flagEl = document.getElementById('langFlag');
-  const codeEl = document.getElementById('langCode');
-  const btnEl = document.getElementById('langToggleBtn');
+  const flagEl = document.getElementById('lang-flag-img') || document.getElementById('langFlag');
+  const codeEl = document.getElementById('lang-code-text') || document.getElementById('langCode');
+  const btnEl = document.getElementById('lang-toggle-btn') || document.getElementById('langToggleBtn');
 
   if (flagEl) flagEl.src = meta.flag;
   if (codeEl) codeEl.textContent = meta.code;
@@ -214,7 +214,7 @@ function cycleCafLanguage() {
 document.addEventListener('DOMContentLoaded', () => {
   applyCafLanguage(getCurrentCafLanguage());
 
-  const btn = document.getElementById('langToggleBtn');
+  const btn = document.getElementById('lang-toggle-btn') || document.getElementById('langToggleBtn');
   if (btn) {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
