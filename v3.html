@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CAF Nazionale – Assistenza Fiscale</title>
+  <title data-i18n="v3_page_title">CAF Nazionale – Assistenza Fiscale</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -73,6 +73,33 @@
     }
     .nav .btn-nav:hover { background:var(--accent-hover); transform:translateY(-1px); }
     .hamburger { display:none; background:none; border:none; font-size:1.5rem; color:var(--primary); cursor:pointer; }
+    .lang-toggle-btn {
+      background:rgba(0, 61, 115, 0.08);
+      border:1px solid rgba(0, 61, 115, 0.22);
+      border-radius:8px;
+      cursor:pointer;
+      padding:8px 12px;
+      min-height:38px;
+      touch-action:manipulation;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      transition:all 0.3s ease;
+      box-shadow:0 2px 8px rgba(0,0,0,0.05);
+      color:var(--primary);
+      font-family:var(--font);
+    }
+    .lang-toggle-btn:hover {
+      background:rgba(227, 6, 19, 0.1);
+      border-color:var(--accent);
+      transform:translateY(-1px);
+    }
+    .lang-toggle-btn img {
+      width:20px; height:auto; border-radius:2px; display:block;
+    }
+    .lang-toggle-btn span {
+      font-size:0.78rem; font-weight:700; letter-spacing:0.5px;
+    }
 
     /* Hero */
     .hero {
@@ -301,22 +328,28 @@
     </a>
     <nav class="nav">
       <ul>
-        <li><a href="#servizi">Servizi</a></li>
-        <li><a href="#app">EasyCAF</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#contatti">Contatti</a></li>
-        <li><a href="#prenota" class="btn-nav"><i class="fas fa-calendar-check"></i> Prenota</a></li>
+        <li><a href="#servizi" data-i18n="nav_services">Servizi</a></li>
+        <li><a href="#app" data-i18n="v3_nav_easycaf">EasyCAF</a></li>
+        <li><a href="#news" data-i18n="nav_news">News</a></li>
+        <li><a href="#contatti" data-i18n="nav_contact">Contatti</a></li>
+        <li><a href="#prenota" class="btn-nav" data-i18n="v3_nav_book"><i class="fas fa-calendar-check"></i> Prenota</a></li>
       </ul>
     </nav>
-    <button class="hamburger"><i class="fas fa-bars"></i></button>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <button type="button" id="lang-toggle-btn" class="lang-toggle-btn" title="Switch to English" aria-label="Change language">
+        <img id="lang-flag-img" src="https://flagcdn.com/w40/it.png" alt="Italiano">
+        <span id="lang-code-text">IT</span>
+      </button>
+      <button class="hamburger"><i class="fas fa-bars"></i></button>
+    </div>
   </div>
 </header>
 
 <section class="hero">
   <div class="container">
     <div>
-      <h1>Da oltre 30 anni il tuo centro di assistenza fiscale di fiducia</h1>
-      <p>Il CAF Nazionale opera per fornire a lavoratori, pensionati e iscritti assistenza e consulenza completa e qualificata nel campo fiscale e delle agevolazioni sociali.</p>
+      <h1 data-i18n="v3_hero_h1">Da oltre 30 anni il tuo centro di assistenza fiscale di fiducia</h1>
+      <p data-i18n="v3_hero_p">Il CAF Nazionale opera per fornire a lavoratori, pensionati e iscritti assistenza e consulenza completa e qualificata nel campo fiscale e delle agevolazioni sociali.</p>
       <div class="hero-highlights">
         <div class="hero-hl"><i class="fas fa-file-invoice"></i> Modello 730 2026</div>
         <div class="hero-hl"><i class="fas fa-id-card"></i> ISEE / Bonus sociali</div>
@@ -324,8 +357,8 @@
         <div class="hero-hl"><i class="fas fa-house-chimney"></i> IMU e Bonus casa</div>
       </div>
       <div class="hero-cta">
-        <a href="#prenota" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Prenota appuntamento</a>
-        <a href="#app" class="btn btn-outline-light"><i class="fas fa-mobile-alt"></i> EasyCAF App</a>
+        <a href="#prenota" class="btn btn-primary" data-i18n="v3_hero_btn1"><i class="fas fa-calendar-check"></i> Prenota appuntamento</a>
+        <a href="#app" class="btn btn-outline-light" data-i18n="v3_hero_btn2"><i class="fas fa-mobile-alt"></i> EasyCAF App</a>
       </div>
     </div>
     <div style="display:grid;gap:16px;">
@@ -348,8 +381,8 @@
 <section class="servizi-band" id="servizi">
   <div class="container">
     <div class="section-header">
-      <h2>Cosa possiamo fare per te</h2>
-      <p>Non solo 730: siamo il posto giusto per tutti i tuoi adempimenti fiscali e burocratici.</p>
+      <h2 data-i18n="v3_srv_h2">Cosa possiamo fare per te</h2>
+      <p data-i18n="v3_srv_sub">Non solo 730: siamo il posto giusto per tutti i tuoi adempimenti fiscali e burocratici.</p>
     </div>
     <div class="band-grid">
       <div class="band-card">
@@ -409,8 +442,8 @@
 <section class="servizi-ext">
   <div class="container">
     <div class="section-header">
-      <h2>Tutti i servizi</h2>
-      <p>Una gamma completa di servizi fiscali, previdenziali e di consulenza.</p>
+      <h2 data-i18n="v3_ext_h2">Tutti i servizi</h2>
+      <p data-i18n="v3_ext_sub">Una gamma completa di servizi fiscali, previdenziali e di consulenza.</p>
     </div>
     <div class="ext-grid">
       <div class="ext-card"><i class="fas fa-file-invoice"></i><h3>Modello 730</h3><p>Dichiarazione precompilata</p></div>
@@ -434,8 +467,8 @@
 <section id="news" class="news">
   <div class="container">
     <div class="section-header">
-      <h2>Ultime News</h2>
-      <p>Rimani aggiornato sulle scadenze fiscali e le novità normative.</p>
+      <h2 data-i18n="v3_news_h2">Ultime News</h2>
+      <p data-i18n="v3_news_sub">Rimani aggiornato sulle scadenze fiscali e le novità normative.</p>
     </div>
     <div class="news-grid">
       <article class="news-card">
@@ -481,8 +514,8 @@
   <div class="container">
     <div class="nl-grid">
       <div class="nl-text">
-        <h2>Iscriviti alla Newsletter</h2>
-        <p>Per rimanere sempre aggiornato sulle novità fiscali e del mondo CAF.</p>
+        <h2 data-i18n="v3_nl_h2">Iscriviti alla Newsletter</h2>
+        <p data-i18n="v3_nl_p">Per rimanere sempre aggiornato sulle novità fiscali e del mondo CAF.</p>
       </div>
       <form class="nl-form">
         <input type="email" placeholder="La tua email" required>
@@ -496,8 +529,8 @@
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
       <div>
-        <h2 style="font-size:2rem;color:var(--primary);margin-bottom:14px;">Contattaci</h2>
-        <p style="color:var(--text-light);margin-bottom:20px;">Per informazioni riguardanti i servizi offerti, chiama i numeri verdi o scrivici.</p>
+        <h2 data-i18n="v3_contact_h2" style="font-size:2rem;color:var(--primary);margin-bottom:14px;">Contattaci</h2>
+        <p data-i18n="v3_contact_p" style="color:var(--text-light);margin-bottom:20px;">Per informazioni riguardanti i servizi offerti, chiama i numeri verdi o scrivici.</p>
         <div style="display:grid;gap:14px;">
           <div style="background:var(--white);border-radius:var(--radius);padding:18px;border:1px solid var(--border);display:flex;align-items:center;gap:14px;">
             <i class="fas fa-phone-volume" style="font-size:1.5rem;color:var(--accent);"></i>
@@ -640,5 +673,6 @@
     });
   });
 </script>
+<script src="js/main.js"></script>
 </body>
 </html>

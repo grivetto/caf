@@ -4,13 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="CAF Italia - Centro di Assistenza Fiscale. Tre versioni del sito: classica, multietnica, istituzionale.">
-  <title>CAF Italia – Seleziona Stile</title>
+  <title data-i18n="idx_page_title">CAF Italia – Seleziona Stile</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
       font-family:'Segoe UI',system-ui,sans-serif;
       background:linear-gradient(135deg,#0e3a55 0%,#1a5276 50%,#2e86c1 100%);
       color:#fff; min-height:100vh; display:flex; align-items:center;
+      position:relative;
+    }
+    .top-lang-bar {
+      position:fixed; top:24px; right:24px; z-index:1000;
+    }
+    .lang-toggle-btn {
+      background:rgba(255,255,255,0.14);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,0.28);
+      border-radius:8px;
+      cursor:pointer;
+      padding:8px 12px;
+      min-height:38px;
+      touch-action:manipulation;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      transition:all 0.3s ease;
+      box-shadow:0 2px 10px rgba(0,0,0,0.2);
+      color:#fff;
+      font-family:inherit;
+    }
+    .lang-toggle-btn:hover {
+      background:rgba(255,255,255,0.24);
+      border-color:#e67e22;
+      transform:translateY(-1px);
+    }
+    .lang-toggle-btn img {
+      width:20px; height:auto; border-radius:2px; display:block;
+    }
+    .lang-toggle-btn span {
+      font-size:0.78rem; font-weight:700; letter-spacing:0.5px;
     }
     .container { max-width:960px; margin:0 auto; padding:40px 20px; text-align:center; }
     h1 { font-size:2.6rem; margin-bottom:8px; letter-spacing:-0.5px; }
@@ -33,34 +65,42 @@
       .grid { grid-template-columns:1fr; gap:16px; }
       h1 { font-size:2rem; }
       .card { padding:28px 20px; }
+      .top-lang-bar { top:16px; right:16px; }
     }
   </style>
 </head>
-<body>
+<body data-page="index">
+  <div class="top-lang-bar">
+    <button type="button" id="lang-toggle-btn" class="lang-toggle-btn" title="Switch to English" aria-label="Change language">
+      <img id="lang-flag-img" src="https://flagcdn.com/w40/it.png" alt="Italiano">
+      <span id="lang-code-text">IT</span>
+    </button>
+  </div>
   <div class="container">
-    <h1>
+    <h1 data-i18n-html="idx_h1">
       Seleziona Stile
       <small><span class="accent">CAF</span> Italia</small>
     </h1>
-    <p>Scegli tra il sito che preferisci</p>
+    <p data-i18n="idx_sub">Scegli tra il sito che preferisci</p>
     <div class="grid">
       <a href="v1.html" class="card">
         <span class="card-emoji">&#x2728;</span>
-        <h2>Moderno</h2>
-        <p>Design pulito e professionale. Perfetto per uno studio tradizionale.</p>
+        <h2 data-i18n="idx_c1_title">Moderno</h2>
+        <p data-i18n="idx_c1_desc">Design pulito e professionale. Perfetto per uno studio tradizionale.</p>
       </a>
       <a href="v2.html" class="card">
         <span class="card-emoji">&#x1F680;</span>
-        <h2>Futuristico</h2>
-        <p>Stile dinamico, multilingua e multiservizio. Per chi guarda avanti.</p>
+        <h2 data-i18n="idx_c2_title">Futuristico</h2>
+        <p data-i18n="idx_c2_desc">Stile dinamico, multilingua e multiservizio. Per chi guarda avanti.</p>
       </a>
       <a href="v3.html" class="card">
         <span class="card-emoji">&#x1F4FA;</span>
-        <h2>Retr&ograve;</h2>
-        <p>Look istituzionale e rassicurante. La tradizione del fisco italiano.</p>
+        <h2 data-i18n="idx_c3_title">Retr&ograve;</h2>
+        <p data-i18n="idx_c3_desc">Look istituzionale e rassicurante. La tradizione del fisco italiano.</p>
       </a>
     </div>
-    <div class="bottom">Scegli lo stile e inizia la navigazione</div>
+    <div class="bottom" data-i18n="idx_bottom">Scegli lo stile e inizia la navigazione</div>
   </div>
+  <script src="js/main.js"></script>
 </body>
 </html>

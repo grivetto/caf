@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GSM CAF – Servizi Multietnici</title>
+  <title data-i18n="v2_page_title">GSM CAF – Servizi Multietnici</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -60,15 +60,34 @@
     }
     .nav a:hover { color:var(--accent); }
     .nav a:hover::after { width:100%; }
-    .lang-switch {
-      display:flex; gap:6px; font-size:0.8rem; font-weight:600;
+
+    .lang-toggle-btn {
+      background:rgba(0, 109, 91, 0.08);
+      border:1px solid rgba(0, 109, 91, 0.22);
+      border-radius:8px;
+      cursor:pointer;
+      padding:8px 12px;
+      min-height:38px;
+      touch-action:manipulation;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      transition:all 0.3s ease;
+      box-shadow:0 2px 8px rgba(0,0,0,0.05);
+      color:var(--primary);
+      font-family:var(--font);
     }
-    .lang-switch a {
-      padding:4px 10px; border-radius:20px; border:1px solid var(--border);
-      transition:all .3s;
+    .lang-toggle-btn:hover {
+      background:rgba(230, 126, 34, 0.12);
+      border-color:var(--accent);
+      transform:translateY(-1px);
     }
-    .lang-switch a.active { background:var(--primary); color:var(--white); border-color:var(--primary); }
-    .lang-switch a:hover { border-color:var(--accent); }
+    .lang-toggle-btn img {
+      width:20px; height:auto; border-radius:2px; display:block;
+    }
+    .lang-toggle-btn span {
+      font-size:0.78rem; font-weight:700; letter-spacing:0.5px;
+    }
 
     /* Hero */
     .hero {
@@ -274,11 +293,11 @@
     }
   </style>
 </head>
-<body>
+<body data-page="v2">
 
 <div class="top-bar">
   <div class="container">
-    <span><i class="fas fa-clock"></i> Lun–Ven 09:00–12:30 | 15:00–18:00</span>
+    <span data-i18n-html="v2_topbar_hours"><i class="fas fa-clock"></i> Lun–Ven 09:00–12:30 | 15:00–18:00</span>
     <span><i class="fas fa-phone-alt"></i> 011.188.50472</span>
   </div>
 </div>
@@ -291,37 +310,35 @@
     </a>
     <nav class="nav">
       <ul>
-        <li><a href="#servizi">Servizi</a></li>
-        <li><a href="#chi-siamo">Chi Siamo</a></li>
-        <li><a href="#sedi">Sedi</a></li>
-        <li><a href="#contatti">Contatti</a></li>
+        <li><a href="#servizi" data-i18n="nav_services">Servizi</a></li>
+        <li><a href="#chi-siamo" data-i18n="nav_about">Chi Siamo</a></li>
+        <li><a href="#sedi" data-i18n="nav_locations">Sedi</a></li>
+        <li><a href="#contatti" data-i18n="nav_contact">Contatti</a></li>
       </ul>
     </nav>
-    <div class="lang-switch">
-      <a href="#" class="active">IT</a>
-      <a href="#">EN</a>
-      <a href="#">FR</a>
-      <a href="#">AR</a>
-    </div>
+    <button type="button" id="lang-toggle-btn" class="lang-toggle-btn" title="Switch to English" aria-label="Change language">
+      <img id="lang-flag-img" src="https://flagcdn.com/w40/it.png" alt="Italiano">
+      <span id="lang-code-text">IT</span>
+    </button>
   </div>
 </header>
 
 <section class="hero">
   <div class="container">
     <div>
-      <h1>Il tuo <span>CAF multietnico</span> a Torino e Asti</h1>
-      <p>Operatori multilingua ti supportano in ogni pratica fiscale, burocratica e previdenziale. Dal 2019 al tuo fianco.</p>
+      <h1 data-i18n-html="v2_hero_h1">Il tuo <span>CAF multietnico</span> a Torino e Asti</h1>
+      <p data-i18n="v2_hero_p">Operatori multilingua ti supportano in ogni pratica fiscale, burocratica e previdenziale. Dal 2019 al tuo fianco.</p>
       <div class="hero-cta">
-        <a href="#contatti" class="btn btn-primary btn-lg"><i class="fas fa-calendar-check"></i> Prenota appuntamento</a>
-        <a href="#" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Scrivici su WhatsApp</a>
+        <a href="#contatti" class="btn btn-primary btn-lg" data-i18n-html="v2_hero_btn1"><i class="fas fa-calendar-check"></i> Prenota appuntamento</a>
+        <a href="#contatti" class="btn btn-whatsapp" data-i18n-html="v2_hero_btn2"><i class="fab fa-whatsapp"></i> Scrivici su WhatsApp</a>
       </div>
     </div>
     <div class="hero-flags">
-      <div class="hero-flag-card"><i class="fas fa-file-invoice"></i> Certificazione ISEE, 730, Modello Unico</div>
-      <div class="hero-flag-card"><i class="fas fa-passport"></i> Sportello immigrazione & Cittadinanza</div>
-      <div class="hero-flag-card"><i class="fas fa-plane"></i> Biglietteria aerea internazionale</div>
-      <div class="hero-flag-card"><i class="fas fa-car"></i> Assicurazioni RCA</div>
-      <div class="hero-flag-card"><i class="fas fa-hand-holding-heart"></i> Pensioni sociali e di vecchiaia</div>
+      <div class="hero-flag-card" data-i18n-html="v2_hf1"><i class="fas fa-file-invoice"></i> Certificazione ISEE, 730, Modello Unico</div>
+      <div class="hero-flag-card" data-i18n-html="v2_hf2"><i class="fas fa-passport"></i> Sportello immigrazione &amp; Cittadinanza</div>
+      <div class="hero-flag-card" data-i18n-html="v2_hf3"><i class="fas fa-plane"></i> Biglietteria aerea internazionale</div>
+      <div class="hero-flag-card" data-i18n-html="v2_hf4"><i class="fas fa-car"></i> Assicurazioni RCA</div>
+      <div class="hero-flag-card" data-i18n-html="v2_hf5"><i class="fas fa-hand-holding-heart"></i> Pensioni sociali e di vecchiaia</div>
     </div>
   </div>
 </section>
@@ -332,17 +349,17 @@
       <div class="stat-card">
         <i class="fas fa-calendar-alt"></i>
         <span class="stat-number" data-target="7">0</span>
-        <span class="stat-label">Anni di esperienza</span>
+        <span class="stat-label" data-i18n="v1_stat1">Anni di esperienza</span>
       </div>
       <div class="stat-card">
         <i class="fas fa-file-signature"></i>
         <span class="stat-number" data-target="8500">0</span>
-        <span class="stat-label">Pratiche svolte</span>
+        <span class="stat-label" data-i18n="v2_stat2">Pratiche svolte</span>
       </div>
       <div class="stat-card">
         <i class="fas fa-language"></i>
         <span class="stat-number" data-target="6">0</span>
-        <span class="stat-label">Lingue parlate</span>
+        <span class="stat-label" data-i18n="v2_stat3">Lingue parlate</span>
       </div>
     </div>
   </div>
@@ -351,22 +368,22 @@
 <section id="servizi" class="servizi">
   <div class="container">
     <div class="section-header">
-      <h2>I nostri servizi</h2>
-      <p>Dalla dichiarazione dei redditi all'assistenza immigrazione, siamo qui per te.</p>
+      <h2 data-i18n="v1_srv_h2">I nostri servizi</h2>
+      <p data-i18n="v2_srv_sub">Dalla dichiarazione dei redditi all'assistenza immigrazione, siamo qui per te.</p>
     </div>
     <div class="servizi-grid">
-      <a href="#" class="servizio-card"><i class="fas fa-file-invoice"></i><h3>Modello 730</h3><p>Dichiarazione dei redditi precompilata</p></a>
-      <a href="#" class="servizio-card"><i class="fas fa-file-signature"></i><h3>Modello Unico</h3><p>Per autonomi e imprese</p></a>
-      <a href="#" class="servizio-card"><i class="fas fa-id-card"></i><h3>ISEE</h3><p>Indicatore situazione economica</p></a>
-      <a href="#" class="servizio-card"><i class="fas fa-calculator"></i><h3>Calcolo IMU</h3><p>Imposta municipale sugli immobili</p></a>
-      <a href="#" class="servizio-card"><i class="fas fa-file-contract"></i><h3>Successioni</h3><p>Dichiarazione entro 12 mesi</p></a>
-      <a href="#" class="servizio-card"><i class="fas fa-file-pdf"></i><h3>Modelli INPS</h3><p>RED e Accertamento As/Ps</p></a>
-      <a href="#" class="servizio-card"><i class="fas fa-hands-helping"></i><h3>COLF e Badanti</h3><p>Contratti e contributi</p></a>
-      <a href="#" class="servizio-card"><i class="fas fa-passport"></i><h3>Immigrazione</h3><p>Permessi, cittadinanza, ricongiungimenti</p></a>
-      <a href="#" class="servizio-card"><i class="fas fa-plane"></i><h3>Biglietteria Aerea</h3><p>Voli internazionali</p></a>
-      <a href="#" class="servizio-card"><i class="fas fa-car"></i><h3>Assicurazioni RCA</h3><p>Proteggi la tua auto</p></a>
-      <a href="#" class="servizio-card"><i class="fas fa-hand-holding-heart"></i><h3>Pensioni</h3><p>Sociali, vecchiaia, reversibilità</p></a>
-      <a href="#" class="servizio-card"><i class="fas fa-gavel"></i><h3>Sportello Legale</h3><p>Ricorso asilo politico</p></a>
+      <a href="#contatti" class="servizio-card"><i class="fas fa-file-invoice"></i><h3 data-i18n="v1_s1_h3">Modello 730</h3><p data-i18n="v2_s1_p">Dichiarazione dei redditi precompilata</p></a>
+      <a href="#contatti" class="servizio-card"><i class="fas fa-file-signature"></i><h3 data-i18n="v1_s2_h3">Modello Unico</h3><p data-i18n="v2_s2_p">Per autonomi e imprese</p></a>
+      <a href="#contatti" class="servizio-card"><i class="fas fa-id-card"></i><h3 data-i18n="v2_s3_h3">ISEE</h3><p data-i18n="v2_s3_p">Indicatore situazione economica</p></a>
+      <a href="#contatti" class="servizio-card"><i class="fas fa-calculator"></i><h3 data-i18n="v1_s6_h3">Calcolo IMU</h3><p data-i18n="v2_s4_p">Imposta municipale sugli immobili</p></a>
+      <a href="#contatti" class="servizio-card"><i class="fas fa-file-contract"></i><h3 data-i18n="v1_s5_h3">Successioni</h3><p data-i18n="v2_s5_p">Dichiarazione entro 12 mesi</p></a>
+      <a href="#contatti" class="servizio-card"><i class="fas fa-file-pdf"></i><h3 data-i18n="v1_s4_h3">Modelli INPS</h3><p data-i18n="v2_s6_p">RED e Accertamento As/Ps</p></a>
+      <a href="#contatti" class="servizio-card"><i class="fas fa-hands-helping"></i><h3 data-i18n="v1_s7_h3">COLF e Badanti</h3><p data-i18n="v2_s7_p">Contratti e contributi</p></a>
+      <a href="#contatti" class="servizio-card"><i class="fas fa-passport"></i><h3 data-i18n="v2_s8_h3">Immigrazione</h3><p data-i18n="v2_s8_p">Permessi, cittadinanza, ricongiungimenti</p></a>
+      <a href="#contatti" class="servizio-card"><i class="fas fa-plane"></i><h3 data-i18n="v2_s9_h3">Biglietteria Aerea</h3><p data-i18n="v2_s9_p">Voli internazionali</p></a>
+      <a href="#contatti" class="servizio-card"><i class="fas fa-car"></i><h3 data-i18n="v2_s10_h3">Assicurazioni RCA</h3><p data-i18n="v2_s10_p">Proteggi la tua auto</p></a>
+      <a href="#contatti" class="servizio-card"><i class="fas fa-hand-holding-heart"></i><h3 data-i18n="v2_s11_h3">Pensioni</h3><p data-i18n="v2_s11_p">Sociali, vecchiaia, reversibilità</p></a>
+      <a href="#contatti" class="servizio-card"><i class="fas fa-gavel"></i><h3 data-i18n="v2_s12_h3">Sportello Legale</h3><p data-i18n="v2_s12_p">Ricorso asilo politico</p></a>
     </div>
   </div>
 </section>
@@ -374,29 +391,29 @@
 <section class="multiservizi">
   <div class="container">
     <div class="section-header">
-      <h2>Multiservizi</h2>
-      <p>Un unico punto di riferimento per tutte le tue esigenze.</p>
+      <h2 data-i18n="v2_ms_h2">Multiservizi</h2>
+      <p data-i18n="v2_ms_sub">Un unico punto di riferimento per tutte le tue esigenze.</p>
     </div>
     <div class="multiservizi-grid">
       <div class="ms-card">
         <i class="fas fa-plane" style="font-size:2.4rem;color:var(--accent);"></i>
-        <h3>Biglietteria Aerea</h3>
-        <p>Prenota i tuoi voli con facilità, tariffe competitive per tutto il mondo.</p>
+        <h3 data-i18n="v2_s9_h3">Biglietteria Aerea</h3>
+        <p data-i18n="v2_ms1_p">Prenota i tuoi voli con facilità, tariffe competitive per tutto il mondo.</p>
       </div>
       <div class="ms-card">
         <i class="fas fa-car" style="font-size:2.4rem;color:var(--accent);"></i>
-        <h3>Assicurazioni RCA</h3>
-        <p>Proteggi te e la tua auto con le migliori polizze.</p>
+        <h3 data-i18n="v2_s10_h3">Assicurazioni RCA</h3>
+        <p data-i18n="v2_ms2_p">Proteggi te e la tua auto con le migliori polizze.</p>
       </div>
       <div class="ms-card">
         <i class="fas fa-gavel" style="font-size:2.4rem;color:var(--accent);"></i>
-        <h3>Sportello Immigrazione</h3>
-        <p>Assistenza legale per pratiche di immigrazione e asilo.</p>
+        <h3 data-i18n="v2_ms3_h3">Sportello Immigrazione</h3>
+        <p data-i18n="v2_ms3_p">Assistenza legale per pratiche di immigrazione e asilo.</p>
       </div>
       <div class="ms-card">
         <i class="fas fa-hand-holding-heart" style="font-size:2.4rem;color:var(--accent);"></i>
-        <h3>Pensioni</h3>
-        <p>Consulenze su pensioni sociali, vecchiaia e anticipate.</p>
+        <h3 data-i18n="v2_s11_h3">Pensioni</h3>
+        <p data-i18n="v2_ms4_p">Consulenze su pensioni sociali, vecchiaia e anticipate.</p>
       </div>
     </div>
   </div>
@@ -406,24 +423,24 @@
   <div class="container">
     <div class="team-content">
       <div class="team-text">
-        <h2>Chi Siamo</h2>
-        <p><strong>GSM – Gruppo di Servizi Multietnici</strong> nasce con la missione di supportare cittadini italiani e stranieri in ogni pratica burocratica e fiscale.</p>
-        <p>Dal <strong>2019</strong> operiamo a <strong>Torino</strong> con un team di operatori <strong>multilingua</strong> (italiano, inglese, francese, arabo, rumeno, spagnolo) per abbattere ogni barriera linguistica.</p>
-        <p>Offriamo servizi che spaziano dal supporto fiscale e previdenziale alle consulenze legali e assicurative, con attenzione alla <strong>multiculturalità</strong> e all'<strong>inclusione</strong>.</p>
-        <div class="team-badge">
+        <h2 data-i18n="v1_about_h2">Chi Siamo</h2>
+        <p data-i18n-html="v2_about_p1"><strong>GSM – Gruppo di Servizi Multietnici</strong> nasce con la missione di supportare cittadini italiani e stranieri in ogni pratica burocratica e fiscale.</p>
+        <p data-i18n-html="v2_about_p2">Dal <strong>2019</strong> operiamo a <strong>Torino</strong> con un team di operatori <strong>multilingua</strong> (italiano, inglese, francese, arabo, rumeno, spagnolo) per abbattere ogni barriera linguistica.</p>
+        <p data-i18n-html="v2_about_p3">Offriamo servizi che spaziano dal supporto fiscale e previdenziale alle consulenze legali e assicurative, con attenzione alla <strong>multiculturalità</strong> e all'<strong>inclusione</strong>.</p>
+        <div class="team-badge" data-i18n-html="v2_about_badge">
           <i class="fas fa-language"></i> Operatori multilingua
         </div>
       </div>
       <div style="display:grid;gap:16px;">
         <div style="background:var(--white);border-radius:var(--radius);padding:24px;border:1px solid var(--border);box-shadow:var(--shadow);">
           <i class="fas fa-users" style="font-size:2rem;color:var(--accent);margin-bottom:10px;display:block;"></i>
-          <h3 style="color:var(--primary);margin-bottom:6px;">Personale qualificato</h3>
-          <p style="color:var(--text-light);font-size:0.92rem;">Operatori madrelingua formati per assisterti in tutte le pratiche con professionalità e competenza.</p>
+          <h3 style="color:var(--primary);margin-bottom:6px;" data-i18n="v2_team_c1_h3">Personale qualificato</h3>
+          <p style="color:var(--text-light);font-size:0.92rem;" data-i18n="v2_team_c1_p">Operatori madrelingua formati per assisterti in tutte le pratiche con professionalità e competenza.</p>
         </div>
         <div style="background:var(--white);border-radius:var(--radius);padding:24px;border:1px solid var(--border);box-shadow:var(--shadow);">
           <i class="fas fa-handshake" style="font-size:2rem;color:var(--accent);margin-bottom:10px;display:block;"></i>
-          <h3 style="color:var(--primary);margin-bottom:6px;">Affidabilità e trasparenza</h3>
-          <p style="color:var(--text-light);font-size:0.92rem;">Oltre 8.500 pratiche gestite con serietà e trasparenza. Il tuo sorriso è la nostra migliore referenza.</p>
+          <h3 style="color:var(--primary);margin-bottom:6px;" data-i18n="v2_team_c2_h3">Affidabilità e trasparenza</h3>
+          <p style="color:var(--text-light);font-size:0.92rem;" data-i18n="v2_team_c2_p">Oltre 8.500 pratiche gestite con serietà e trasparenza. Il tuo sorriso è la nostra migliore referenza.</p>
         </div>
       </div>
     </div>
@@ -433,12 +450,12 @@
 <section id="sedi" class="sedi">
   <div class="container">
     <div class="section-header">
-      <h2>Le nostre sedi</h2>
-      <p>Siamo presenti a Torino e Asti con 6 sedi operative.</p>
+      <h2 data-i18n="v2_sedi_h2">Le nostre sedi</h2>
+      <p data-i18n="v2_sedi_sub">Siamo presenti a Torino e Asti con 6 sedi operative.</p>
     </div>
     <div class="sedi-grid">
       <div class="sede-card">
-        <h4><i class="fas fa-map-marker-alt"></i> Sede Centrale – San Donato</h4>
+        <h4 data-i18n-html="v2_sede1_h4"><i class="fas fa-map-marker-alt"></i> Sede Centrale – San Donato</h4>
         <p><i class="fas fa-location-dot"></i> Via San Donato, 45 – 10144 Torino<br><i class="fas fa-phone"></i> 011.188.50472<br><i class="fas fa-mobile-alt"></i> 375.514.8250</p>
       </div>
       <div class="sede-card">
@@ -468,14 +485,14 @@
 <section class="perche">
   <div class="container">
     <div class="section-header" style="color:var(--white);">
-      <h2 style="color:var(--white);">Perché sceglierci</h2>
-      <p style="color:rgba(255,255,255,0.8);">Competenza, multiculturalità e vicinanza al cittadino.</p>
+      <h2 style="color:var(--white);" data-i18n="v2_why_h2">Perché sceglierci</h2>
+      <p style="color:rgba(255,255,255,0.8);" data-i18n="v2_why_sub">Competenza, multiculturalità e vicinanza al cittadino.</p>
     </div>
     <div class="perche-grid">
-      <div class="perche-card"><i class="fas fa-language"></i><h3>Team multilingua</h3><p>Assistenza in italiano, inglese, francese, arabo, rumeno, spagnolo.</p></div>
-      <div class="perche-card"><i class="fas fa-location-dot"></i><h3>6 sedi</h3><p>Presenti a Torino e Asti, sempre vicini a te.</p></div>
-      <div class="perche-card"><i class="fas fa-star"></i><h3>Esperienza</h3><p>Dal 2019 con migliaia di pratiche gestite con successo.</p></div>
-      <div class="perche-card"><i class="fas fa-hand-holding-heart"></i><h3>Assistenza completa</h3><p>Dai bonus fiscali all'immigrazione, un unico interlocutore.</p></div>
+      <div class="perche-card"><i class="fas fa-language"></i><h3 data-i18n="v2_why1_h3">Team multilingua</h3><p data-i18n="v2_why1_p">Assistenza in italiano, inglese, francese, arabo, rumeno, spagnolo.</p></div>
+      <div class="perche-card"><i class="fas fa-location-dot"></i><h3 data-i18n="v2_why2_h3">6 sedi</h3><p data-i18n="v2_why2_p">Presenti a Torino e Asti, sempre vicini a te.</p></div>
+      <div class="perche-card"><i class="fas fa-star"></i><h3 data-i18n="v2_why3_h3">Esperienza</h3><p data-i18n="v2_why3_p">Dal 2019 con migliaia di pratiche gestite con successo.</p></div>
+      <div class="perche-card"><i class="fas fa-hand-holding-heart"></i><h3 data-i18n="v2_why4_h3">Assistenza completa</h3><p data-i18n="v2_why4_p">Dai bonus fiscali all'immigrazione, un unico interlocutore.</p></div>
     </div>
   </div>
 </section>
@@ -484,35 +501,35 @@
   <div class="container">
     <div class="contatti-grid">
       <div class="contatti-info">
-        <h2>Contattaci</h2>
-        <p>Compila il modulo o contattaci direttamente, ti risponderemo al più presto.</p>
+        <h2 data-i18n="v1_contact_h2">Contattaci</h2>
+        <p data-i18n="v1_contact_p">Compila il modulo o contattaci direttamente, ti risponderemo al più presto.</p>
         <ul class="contatti-details">
           <li><i class="fas fa-map-marker-alt"></i> Via San Donato, 45 – 10144 Torino</li>
           <li><i class="fas fa-phone-alt"></i> 011.188.50472 / 375.514.8250</li>
           <li><i class="fas fa-envelope"></i> info@grupposervizimultietnici.com</li>
-          <li><i class="fas fa-clock"></i> Lun–Ven: 09:00–12:30 | 15:00–18:00</li>
+          <li data-i18n-html="v1_contact_hours"><i class="fas fa-clock"></i> Lun–Ven: 09:00–12:30 | 15:00–18:00</li>
         </ul>
-        <a href="#" class="btn btn-whatsapp" style="margin-top:16px;"><i class="fab fa-whatsapp"></i> Scrivici su WhatsApp</a>
+        <a href="#contatti" class="btn btn-whatsapp" style="margin-top:16px;" data-i18n-html="v2_hero_btn2"><i class="fab fa-whatsapp"></i> Scrivici su WhatsApp</a>
       </div>
       <form class="contatti-form" id="contactForm">
-        <input type="text" placeholder="Nome e Cognome" required>
-        <input type="email" placeholder="Email" required>
-        <input type="tel" placeholder="Telefono">
-        <input type="text" placeholder="Nazionalità (opzionale)">
+        <input type="text" data-i18n-placeholder="ph_name" placeholder="Nome e Cognome" required>
+        <input type="email" data-i18n-placeholder="ph_email" placeholder="Email" required>
+        <input type="tel" data-i18n-placeholder="ph_phone" placeholder="Telefono">
+        <input type="text" data-i18n-placeholder="ph_nationality" placeholder="Nazionalità (opzionale)">
         <select required>
-          <option value="">Seleziona un servizio</option>
-          <option>Modello 730</option>
-          <option>Modello Unico</option>
-          <option>ISEE</option>
-          <option>Successione</option>
-          <option>Immigrazione / Cittadinanza</option>
-          <option>Biglietteria Aerea</option>
-          <option>Assicurazioni RCA</option>
-          <option>Pensioni</option>
-          <option>Altro</option>
+          <option value="" data-i18n="opt_select_service">Seleziona un servizio</option>
+          <option data-i18n="v1_s1_h3">Modello 730</option>
+          <option data-i18n="v1_s2_h3">Modello Unico</option>
+          <option data-i18n="v2_s3_h3">ISEE</option>
+          <option data-i18n="v1_s5_h3">Successioni</option>
+          <option data-i18n="v2_s8_h3">Immigrazione</option>
+          <option data-i18n="v2_s9_h3">Biglietteria Aerea</option>
+          <option data-i18n="v2_s10_h3">Assicurazioni RCA</option>
+          <option data-i18n="v2_s11_h3">Pensioni</option>
+          <option data-i18n="opt_other">Altro</option>
         </select>
-        <textarea placeholder="Il tuo messaggio..." rows="4" required></textarea>
-        <button type="submit" class="btn btn-primary">Invia messaggio</button>
+        <textarea data-i18n-placeholder="ph_message" placeholder="Il tuo messaggio..." rows="4" required></textarea>
+        <button type="submit" class="btn btn-primary" data-i18n="btn_send_msg">Invia messaggio</button>
       </form>
     </div>
   </div>
@@ -526,7 +543,7 @@
           <i class="fas fa-globe-europe"></i>
           <span>GSM <small>CAF</small></span>
         </a>
-        <p>Gruppo di Servizi Multietnici – il tuo partner fiscale e burocratico multilingua a Torino e Asti.</p>
+        <p data-i18n="v2_footer_desc">Gruppo di Servizi Multietnici – il tuo partner fiscale e burocratico multilingua a Torino e Asti.</p>
         <div class="footer-social">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
           <a href="#"><i class="fab fa-instagram"></i></a>
@@ -534,75 +551,43 @@
         </div>
       </div>
       <div class="footer-col">
-        <h4>Servizi CAF</h4>
+        <h4 data-i18n="v2_footer_caf_srv">Servizi CAF</h4>
         <ul>
-          <li><a href="#">Modello 730</a></li>
-          <li><a href="#">ISEE</a></li>
-          <li><a href="#">Modello Unico</a></li>
-          <li><a href="#">IMU</a></li>
-          <li><a href="#">Successioni</a></li>
+          <li><a href="#servizi" data-i18n="v1_s1_h3">Modello 730</a></li>
+          <li><a href="#servizi" data-i18n="v2_s3_h3">ISEE</a></li>
+          <li><a href="#servizi" data-i18n="v1_s2_h3">Modello Unico</a></li>
+          <li><a href="#servizi" data-i18n="v1_s6_h3">Calcolo IMU</a></li>
+          <li><a href="#servizi" data-i18n="v1_s5_h3">Successioni</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Multiservizi</h4>
+        <h4 data-i18n="v2_ms_h2">Multiservizi</h4>
         <ul>
-          <li><a href="#">Biglietteria Aerea</a></li>
-          <li><a href="#">Assicurazioni RCA</a></li>
-          <li><a href="#">Sportello Immigrazione</a></li>
-          <li><a href="#">Pensioni</a></li>
+          <li><a href="#servizi" data-i18n="v2_s9_h3">Biglietteria Aerea</a></li>
+          <li><a href="#servizi" data-i18n="v2_s10_h3">Assicurazioni RCA</a></li>
+          <li><a href="#servizi" data-i18n="v2_ms3_h3">Sportello Immigrazione</a></li>
+          <li><a href="#servizi" data-i18n="v2_s11_h3">Pensioni</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Contatti</h4>
+        <h4 data-i18n="nav_contact">Contatti</h4>
         <ul>
           <li>Via San Donato, 45</li>
-          <li>10144 Torino</li>
+          <li data-i18n="v1_info2_p">10144 Torino</li>
           <li>011.188.50472</li>
           <li>info@gsm.it</li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 G.S.M. MULTISERVIZI – P.IVA 09996460011 – Tutti i diritti riservati</p>
+      <p data-i18n-html="v2_footer_copy">&copy; 2026 G.S.M. MULTISERVIZI – P.IVA 09996460011 – Tutti i diritti riservati</p>
     </div>
   </div>
 </footer>
 
-<a href="#" class="wa-float" title="Scrivici su WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a href="#contatti" class="wa-float" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
 <a href="#" class="back-top" id="backTop"><i class="fas fa-chevron-up"></i></a>
 
-<script>
-  // Counters
-  document.querySelectorAll('.stat-number').forEach(el => {
-    const target = parseInt(el.dataset.target);
-    const duration = 1500;
-    const step = Math.ceil(target / (duration / 16));
-    let current = 0;
-    const update = () => {
-      current += step;
-      if (current >= target) { el.textContent = target + '+'; return; }
-      el.textContent = current;
-      requestAnimationFrame(update);
-    };
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { update(); obs.unobserve(el); }
-    }, { threshold: 0.5 });
-    obs.observe(el);
-  });
-
-  // Back to top
-  const bt = document.getElementById('backTop');
-  window.addEventListener('scroll', () => bt.classList.toggle('visible', window.scrollY > 400));
-  bt.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
-
-  // Form
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn = this.querySelector('button');
-    btn.textContent = 'Messaggio inviato ✓';
-    btn.style.background = '#27ae60';
-    setTimeout(() => { btn.textContent = 'Invia messaggio'; btn.style.background = ''; this.reset(); }, 3000);
-  });
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>

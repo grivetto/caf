@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="CAF Italia - Centro di Assistenza Fiscale. Modello 730, ISEE, Unico, Successioni, IMU e molto altro.">
-  <title>CAF Italia - Centro di Assistenza Fiscale</title>
+  <title data-i18n="v1_page_title">CAF Italia - Centro di Assistenza Fiscale</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="v1">
 
   <div class="top-bar">
     <div class="container">
-      <span><i class="fas fa-clock"></i> Orario: 09:00 - 12:30 | 15:00 - 18:00</span>
+      <span data-i18n-html="v1_topbar_hours"><i class="fas fa-clock"></i> Orario: 09:00 - 12:30 | 15:00 - 18:00</span>
       <span><i class="fas fa-envelope"></i> info@caf-italia.it</span>
       <span><i class="fas fa-phone-alt"></i> 011.742.8088</span>
     </div>
@@ -20,48 +20,54 @@
 
   <header class="header">
     <div class="container">
-      <a href="#" class="logo">
+      <a href="index.html" class="logo">
         <i class="fas fa-calculator"></i>
         <span>CAF <small>Italia</small></span>
       </a>
       <nav class="nav">
         <ul>
-          <li><a href="#servizi">Servizi</a></li>
-          <li><a href="#chi-siamo">Chi Siamo</a></li>
-          <li><a href="#novita">Novità</a></li>
-          <li><a href="#moduli">Moduli</a></li>
-          <li><a href="#contatti">Contatti</a></li>
+          <li><a href="#servizi" data-i18n="nav_services">Servizi</a></li>
+          <li><a href="#chi-siamo" data-i18n="nav_about">Chi Siamo</a></li>
+          <li><a href="#novita" data-i18n="nav_news">Novità</a></li>
+          <li><a href="#moduli" data-i18n="nav_forms">Moduli</a></li>
+          <li><a href="#contatti" data-i18n="nav_contact">Contatti</a></li>
         </ul>
       </nav>
-      <button class="hamburger"><i class="fas fa-bars"></i></button>
+      <div class="header-actions">
+        <button type="button" id="lang-toggle-btn" class="lang-toggle-btn" title="Switch to English" aria-label="Change language">
+          <img id="lang-flag-img" src="https://flagcdn.com/w40/it.png" alt="Italiano">
+          <span id="lang-code-text">IT</span>
+        </button>
+        <button class="hamburger"><i class="fas fa-bars"></i></button>
+      </div>
     </div>
   </header>
 
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <h1>Il tuo consulente fiscale a portata di click</h1>
-        <p>Professionisti della dichiarazione fiscale al tuo servizio. Modello 730, ISEE, Successioni e molto altro.</p>
+        <h1 data-i18n="v1_hero_h1">Il tuo consulente fiscale a portata di click</h1>
+        <p data-i18n="v1_hero_p">Professionisti della dichiarazione fiscale al tuo servizio. Modello 730, ISEE, Successioni e molto altro.</p>
         <div class="hero-cta">
-          <a href="#contatti" class="btn btn-primary">Contattaci</a>
-          <a href="#servizi" class="btn btn-outline">Scopri i servizi</a>
+          <a href="#contatti" class="btn btn-primary" data-i18n="v1_hero_btn1">Contattaci</a>
+          <a href="#servizi" class="btn btn-outline" data-i18n="v1_hero_btn2">Scopri i servizi</a>
         </div>
       </div>
       <div class="hero-info-cards">
         <div class="info-card">
           <i class="fas fa-phone-volume"></i>
           <h3>011.742.8088</h3>
-          <p>Chiama per info</p>
+          <p data-i18n="v1_info1_p">Chiama per info</p>
         </div>
         <div class="info-card">
           <i class="fas fa-map-marker-alt"></i>
           <h3>Via Balme, 21/A</h3>
-          <p>10143 Torino</p>
+          <p data-i18n="v1_info2_p">10143 Torino</p>
         </div>
         <div class="info-card">
           <i class="fas fa-clock"></i>
           <h3>09:00–18:00</h3>
-          <p>Dal lunedì al venerdì</p>
+          <p data-i18n="v1_info3_p">Dal lunedì al venerdì</p>
         </div>
       </div>
     </div>
@@ -70,69 +76,69 @@
   <section id="servizi" class="servizi">
     <div class="container">
       <div class="section-header">
-        <h2>I nostri servizi</h2>
-        <p>Offriamo una gamma completa di servizi fiscali e di consulenza per privati e imprese.</p>
+        <h2 data-i18n="v1_srv_h2">I nostri servizi</h2>
+        <p data-i18n="v1_srv_sub">Offriamo una gamma completa di servizi fiscali e di consulenza per privati e imprese.</p>
       </div>
       <div class="servizi-grid">
-        <a href="#" class="servizio-card">
+        <a href="#contatti" class="servizio-card">
           <i class="fas fa-file-invoice"></i>
-          <h3>Modello 730</h3>
-          <p>Dichiarazione dei redditi precompilata e assistenza completa.</p>
+          <h3 data-i18n="v1_s1_h3">Modello 730</h3>
+          <p data-i18n="v1_s1_p">Dichiarazione dei redditi precompilata e assistenza completa.</p>
         </a>
-        <a href="#" class="servizio-card">
+        <a href="#contatti" class="servizio-card">
           <i class="fas fa-file-signature"></i>
-          <h3>Modello Unico</h3>
-          <p>Per lavoratori autonomi, imprese e soggetti con più redditi.</p>
+          <h3 data-i18n="v1_s2_h3">Modello Unico</h3>
+          <p data-i18n="v1_s2_p">Per lavoratori autonomi, imprese e soggetti con più redditi.</p>
         </a>
-        <a href="#" class="servizio-card">
+        <a href="#contatti" class="servizio-card">
           <i class="fas fa-id-card"></i>
-          <h3>Modello ISEE</h3>
-          <p>Indicatore della situazione economica equivalente per prestazioni sociali.</p>
+          <h3 data-i18n="v1_s3_h3">Modello ISEE</h3>
+          <p data-i18n="v1_s3_p">Indicatore della situazione economica equivalente per prestazioni sociali.</p>
         </a>
-        <a href="#" class="servizio-card">
+        <a href="#contatti" class="servizio-card">
           <i class="fas fa-file-contract"></i>
-          <h3>Modelli INPS</h3>
-          <p>Gestione pratiche previdenziali e assistenziali.</p>
+          <h3 data-i18n="v1_s4_h3">Modelli INPS</h3>
+          <p data-i18n="v1_s4_p">Gestione pratiche previdenziali e assistenziali.</p>
         </a>
-        <a href="#" class="servizio-card">
+        <a href="#contatti" class="servizio-card">
           <i class="fas fa-landmark"></i>
-          <h3>Successioni</h3>
-          <p>Dichiarazione di successione entro 12 mesi dall'apertura.</p>
+          <h3 data-i18n="v1_s5_h3">Successioni</h3>
+          <p data-i18n="v1_s5_p">Dichiarazione di successione entro 12 mesi dall'apertura.</p>
         </a>
-        <a href="#" class="servizio-card">
+        <a href="#contatti" class="servizio-card">
           <i class="fas fa-home"></i>
-          <h3>Calcolo IMU</h3>
-          <p>Calcolo e predisposizione del modello IMU per la tua abitazione.</p>
+          <h3 data-i18n="v1_s6_h3">Calcolo IMU</h3>
+          <p data-i18n="v1_s6_p">Calcolo e predisposizione del modello IMU per la tua abitazione.</p>
         </a>
-        <a href="#" class="servizio-card">
+        <a href="#contatti" class="servizio-card">
           <i class="fas fa-hands-helping"></i>
-          <h3>COLF e Badanti</h3>
-          <p>Assistenza per la regolarizzazione di collaboratori domestici.</p>
+          <h3 data-i18n="v1_s7_h3">COLF e Badanti</h3>
+          <p data-i18n="v1_s7_p">Assistenza per la regolarizzazione di collaboratori domestici.</p>
         </a>
-        <a href="#" class="servizio-card">
+        <a href="#contatti" class="servizio-card">
           <i class="fas fa-credit-card"></i>
-          <h3>Social Card</h3>
-          <p>Domanda e rinnovo della Social Card e bonus vari.</p>
+          <h3 data-i18n="v1_s8_h3">Social Card</h3>
+          <p data-i18n="v1_s8_p">Domanda e rinnovo della Social Card e bonus vari.</p>
         </a>
-        <a href="#" class="servizio-card">
+        <a href="#contatti" class="servizio-card">
           <i class="fas fa-gavel"></i>
-          <h3>Consulenza Legale</h3>
-          <p>Supporto legale per questioni fiscali e tributarie.</p>
+          <h3 data-i18n="v1_s9_h3">Consulenza Legale</h3>
+          <p data-i18n="v1_s9_p">Supporto legale per questioni fiscali e tributarie.</p>
         </a>
-        <a href="#" class="servizio-card">
+        <a href="#contatti" class="servizio-card">
           <i class="fas fa-handshake"></i>
-          <h3>Commercialista</h3>
-          <p>Consulenza contabile e societaria per imprese e privati.</p>
+          <h3 data-i18n="v1_s10_h3">Commercialista</h3>
+          <p data-i18n="v1_s10_p">Consulenza contabile e societaria per imprese e privati.</p>
         </a>
-        <a href="#" class="servizio-card">
+        <a href="#contatti" class="servizio-card">
           <i class="fas fa-scroll"></i>
-          <h3>Notaio</h3>
-          <p>Autenticazioni, atti notori e vidimazioni documenti.</p>
+          <h3 data-i18n="v1_s11_h3">Notaio</h3>
+          <p data-i18n="v1_s11_p">Autenticazioni, atti notori e vidimazioni documenti.</p>
         </a>
-        <a href="#" class="servizio-card">
+        <a href="#contatti" class="servizio-card">
           <i class="fas fa-draw-polygon"></i>
-          <h3>Servizi Catastali</h3>
-          <p>Visure catastali, planimetrie e pratiche ipotecarie.</p>
+          <h3 data-i18n="v1_s12_h3">Servizi Catastali</h3>
+          <p data-i18n="v1_s12_p">Visure catastali, planimetrie e pratiche ipotecarie.</p>
         </a>
       </div>
     </div>
@@ -142,24 +148,24 @@
     <div class="container">
       <div class="chi-siamo-content">
         <div class="chi-siamo-text">
-          <h2>Chi Siamo</h2>
-          <p>Lo <strong>Studio GA</strong> nasce nel 2009, dopo 25 anni di esperienza professionale della sua fondatrice, <strong>Follini Katiuscia</strong>. Ad affiancarla in questa nuova realtà seri professionisti che hanno compiuto con successo il loro percorso formativo in altrettanti studi associati.</p>
-          <p>Operiamo a <strong>Torino</strong> nei settori della consulenza societaria, aziendale, finanziaria e contabile, fornendo un'ampia gamma di servizi professionali a Clienti sia nazionali che esteri.</p>
-          <p>Garantiamo un alto livello di professionalità nello svolgimento di pratiche immobiliari, societarie e successorie, atti notori e autenticazioni e vidimazioni di documenti.</p>
-          <a href="#contatti" class="btn btn-primary">Richiedi informazioni</a>
+          <h2 data-i18n="v1_about_h2">Chi Siamo</h2>
+          <p data-i18n-html="v1_about_p1">Lo <strong>Studio GA</strong> nasce nel 2009, dopo 25 anni di esperienza professionale della sua fondatrice, <strong>Follini Katiuscia</strong>. Ad affiancarla in questa nuova realtà seri professionisti che hanno compiuto con successo il loro percorso formativo in altrettanti studi associati.</p>
+          <p data-i18n-html="v1_about_p2">Operiamo a <strong>Torino</strong> nei settori della consulenza societaria, aziendale, finanziaria e contabile, fornendo un'ampia gamma di servizi professionali a Clienti sia nazionali che esteri.</p>
+          <p data-i18n="v1_about_p3">Garantiamo un alto livello di professionalità nello svolgimento di pratiche immobiliari, societarie e successorie, atti notori e autenticazioni e vidimazioni di documenti.</p>
+          <a href="#contatti" class="btn btn-primary" data-i18n="v1_about_btn">Richiedi informazioni</a>
         </div>
         <div class="chi-siamo-stats">
           <div class="stat">
             <span class="stat-number" data-target="25">0</span>
-            <span class="stat-label">Anni di esperienza</span>
+            <span class="stat-label" data-i18n="v1_stat1">Anni di esperienza</span>
           </div>
           <div class="stat">
             <span class="stat-number" data-target="5000">0</span>
-            <span class="stat-label">Pratiche gestite</span>
+            <span class="stat-label" data-i18n="v1_stat2">Pratiche gestite</span>
           </div>
           <div class="stat">
             <span class="stat-number" data-target="98">0</span>
-            <span class="stat-label">% Clienti soddisfatti</span>
+            <span class="stat-label" data-i18n="v1_stat3">% Clienti soddisfatti</span>
           </div>
         </div>
       </div>
@@ -169,27 +175,27 @@
   <section id="novita" class="novita">
     <div class="container">
       <div class="section-header">
-        <h2>Ultime Novità</h2>
-        <p>Rimani aggiornato sulle scadenze fiscali e le novità normative.</p>
+        <h2 data-i18n="v1_news_h2">Ultime Novità</h2>
+        <p data-i18n="v1_news_sub">Rimani aggiornato sulle scadenze fiscali e le novità normative.</p>
       </div>
       <div class="novita-grid">
         <article class="novita-card">
           <div class="novita-date"><span>15</span> Apr</div>
-          <h3>Modello 730 2026: tutto quello che devi sapere</h3>
-          <p>Scopri le novità del modello 730 precompilato di quest'anno e la documentazione necessaria per la tua dichiarazione.</p>
-          <a href="#">Leggi tutto <i class="fas fa-arrow-right"></i></a>
+          <h3 data-i18n="v1_n1_h3">Modello 730 2026: tutto quello che devi sapere</h3>
+          <p data-i18n="v1_n1_p">Scopri le novità del modello 730 precompilato di quest'anno e la documentazione necessaria per la tua dichiarazione.</p>
+          <a href="#contatti" data-i18n-html="read_more">Leggi tutto <i class="fas fa-arrow-right"></i></a>
         </article>
         <article class="novita-card">
           <div class="novita-date"><span>10</span> Apr</div>
-          <h3>Scadenza IMU 2026: il calendario aggiornato</h3>
-          <p>L'acconto IMU scade il 16 giugno. Calcola con noi l'importo dovuto per la tua abitazione e scopri le agevolazioni.</p>
-          <a href="#">Leggi tutto <i class="fas fa-arrow-right"></i></a>
+          <h3 data-i18n="v1_n2_h3">Scadenza IMU 2026: il calendario aggiornato</h3>
+          <p data-i18n="v1_n2_p">L'acconto IMU scade il 16 giugno. Calcola con noi l'importo dovuto per la tua abitazione e scopri le agevolazioni.</p>
+          <a href="#contatti" data-i18n-html="read_more">Leggi tutto <i class="fas fa-arrow-right"></i></a>
         </article>
         <article class="novita-card">
           <div class="novita-date"><span>28</span> Mar</div>
-          <h3>Bonus edilizi 2026: cosa cambia</h3>
-          <p>Le nuove regole per bonus ristrutturazione, ecobonus e superbonus. Verifica la tua situazione con i nostri esperti.</p>
-          <a href="#">Leggi tutto <i class="fas fa-arrow-right"></i></a>
+          <h3 data-i18n="v1_n3_h3">Bonus edilizi 2026: cosa cambia</h3>
+          <p data-i18n="v1_n3_p">Le nuove regole per bonus ristrutturazione, ecobonus e superbonus. Verifica la tua situazione con i nostri esperti.</p>
+          <a href="#contatti" data-i18n-html="read_more">Leggi tutto <i class="fas fa-arrow-right"></i></a>
         </article>
       </div>
     </div>
@@ -199,17 +205,17 @@
     <div class="container">
       <div class="moduli-content">
         <div>
-          <h2>Scarica i moduli</h2>
-          <p>Scarica direttamente i modelli che ti servono per le tue pratiche fiscali.</p>
-          <a href="#" class="btn btn-primary"><i class="fas fa-download"></i> Vai ai moduli</a>
+          <h2 data-i18n="v1_mod_h2">Scarica i moduli</h2>
+          <p data-i18n="v1_mod_p">Scarica direttamente i modelli che ti servono per le tue pratiche fiscali.</p>
+          <a href="#contatti" class="btn btn-primary" data-i18n-html="v1_mod_btn"><i class="fas fa-download"></i> Vai ai moduli</a>
         </div>
         <div class="moduli-links">
-          <a href="#"><i class="fas fa-file-pdf"></i> Modello 730</a>
-          <a href="#"><i class="fas fa-file-pdf"></i> Modello Unico</a>
-          <a href="#"><i class="fas fa-file-pdf"></i> Modello ISEE</a>
-          <a href="#"><i class="fas fa-file-pdf"></i> Modello Successione</a>
-          <a href="#"><i class="fas fa-file-pdf"></i> Modello IMU</a>
-          <a href="#"><i class="fas fa-file-pdf"></i> Modello INPS</a>
+          <a href="#contatti"><i class="fas fa-file-pdf"></i> <span data-i18n="v1_s1_h3">Modello 730</span></a>
+          <a href="#contatti"><i class="fas fa-file-pdf"></i> <span data-i18n="v1_s2_h3">Modello Unico</span></a>
+          <a href="#contatti"><i class="fas fa-file-pdf"></i> <span data-i18n="v1_s3_h3">Modello ISEE</span></a>
+          <a href="#contatti"><i class="fas fa-file-pdf"></i> <span data-i18n="v1_s5_h3">Successioni</span></a>
+          <a href="#contatti"><i class="fas fa-file-pdf"></i> <span data-i18n="v1_s6_h3">Calcolo IMU</span></a>
+          <a href="#contatti"><i class="fas fa-file-pdf"></i> <span data-i18n="v1_s4_h3">Modelli INPS</span></a>
         </div>
       </div>
     </div>
@@ -217,9 +223,9 @@
 
   <section class="cta">
     <div class="container">
-      <h2>Il tuo consulente fiscale di zona</h2>
-      <p>Senza nessun impegno contattaci, saremo felici di poterti aiutare.</p>
-      <a href="#contatti" class="btn btn-primary btn-lg">Contattaci</a>
+      <h2 data-i18n="v1_cta_h2">Il tuo consulente fiscale di zona</h2>
+      <p data-i18n="v1_cta_p">Senza nessun impegno contattaci, saremo felici di poterti aiutare.</p>
+      <a href="#contatti" class="btn btn-primary btn-lg" data-i18n="v1_hero_btn1">Contattaci</a>
     </div>
   </section>
 
@@ -227,32 +233,32 @@
     <div class="container">
       <div class="contatti-grid">
         <div class="contatti-info">
-          <h2>Contattaci</h2>
-          <p>Compila il modulo o contattaci direttamente, ti risponderemo al più presto.</p>
+          <h2 data-i18n="v1_contact_h2">Contattaci</h2>
+          <p data-i18n="v1_contact_p">Compila il modulo o contattaci direttamente, ti risponderemo al più presto.</p>
           <ul class="contatti-details">
             <li><i class="fas fa-map-marker-alt"></i> Via Balme, 21/A – 10143 Torino</li>
             <li><i class="fas fa-phone-alt"></i> 011.742.8088 / 389.125.9676</li>
             <li><i class="fas fa-envelope"></i> info@caf-italia.it</li>
-            <li><i class="fas fa-clock"></i> Lun–Ven: 09:00–12:30 | 15:00–18:00</li>
+            <li data-i18n-html="v1_contact_hours"><i class="fas fa-clock"></i> Lun–Ven: 09:00–12:30 | 15:00–18:00</li>
           </ul>
         </div>
         <form class="contatti-form" id="contactForm">
-          <input type="text" placeholder="Nome e Cognome" required>
-          <input type="email" placeholder="Email" required>
-          <input type="tel" placeholder="Telefono">
+          <input type="text" data-i18n-placeholder="ph_name" placeholder="Nome e Cognome" required>
+          <input type="email" data-i18n-placeholder="ph_email" placeholder="Email" required>
+          <input type="tel" data-i18n-placeholder="ph_phone" placeholder="Telefono">
           <select required>
-            <option value="">Seleziona un servizio</option>
-            <option>Modello 730</option>
-            <option>Modello Unico</option>
-            <option>Modello ISEE</option>
-            <option>Successione</option>
-            <option>Calcolo IMU</option>
-            <option>COLF e Badanti</option>
-            <option>Consulenza</option>
-            <option>Altro</option>
+            <option value="" data-i18n="opt_select_service">Seleziona un servizio</option>
+            <option data-i18n="v1_s1_h3">Modello 730</option>
+            <option data-i18n="v1_s2_h3">Modello Unico</option>
+            <option data-i18n="v1_s3_h3">Modello ISEE</option>
+            <option data-i18n="v1_s5_h3">Successioni</option>
+            <option data-i18n="v1_s6_h3">Calcolo IMU</option>
+            <option data-i18n="v1_s7_h3">COLF e Badanti</option>
+            <option data-i18n="opt_consulting">Consulenza</option>
+            <option data-i18n="opt_other">Altro</option>
           </select>
-          <textarea placeholder="Il tuo messaggio..." rows="5" required></textarea>
-          <button type="submit" class="btn btn-primary">Invia messaggio</button>
+          <textarea data-i18n-placeholder="ph_message" placeholder="Il tuo messaggio..." rows="5" required></textarea>
+          <button type="submit" class="btn btn-primary" data-i18n="btn_send_msg">Invia messaggio</button>
         </form>
       </div>
     </div>
@@ -262,11 +268,11 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#" class="logo">
+          <a href="index.html" class="logo">
             <i class="fas fa-calculator"></i>
             <span>CAF <small>Italia</small></span>
           </a>
-          <p>Il tuo consulente contabile a portata di click. Da oltre 25 anni al servizio dei contribuenti torinesi.</p>
+          <p data-i18n="v1_footer_desc">Il tuo consulente contabile a portata di click. Da oltre 25 anni al servizio dei contribuenti torinesi.</p>
           <div class="footer-social">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
@@ -274,37 +280,37 @@
           </div>
         </div>
         <div class="footer-col">
-          <h4>Servizi</h4>
+          <h4 data-i18n="nav_services">Servizi</h4>
           <ul>
-            <li><a href="#">Modello 730</a></li>
-            <li><a href="#">Modello Unico</a></li>
-            <li><a href="#">Modello ISEE</a></li>
-            <li><a href="#">Successioni</a></li>
-            <li><a href="#">Calcolo IMU</a></li>
+            <li><a href="#servizi" data-i18n="v1_s1_h3">Modello 730</a></li>
+            <li><a href="#servizi" data-i18n="v1_s2_h3">Modello Unico</a></li>
+            <li><a href="#servizi" data-i18n="v1_s3_h3">Modello ISEE</a></li>
+            <li><a href="#servizi" data-i18n="v1_s5_h3">Successioni</a></li>
+            <li><a href="#servizi" data-i18n="v1_s6_h3">Calcolo IMU</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Link Utili</h4>
+          <h4 data-i18n="footer_useful_links">Link Utili</h4>
           <ul>
-            <li><a href="#">Chi Siamo</a></li>
-            <li><a href="#">Moduli</a></li>
-            <li><a href="#">Novità</a></li>
+            <li><a href="#chi-siamo" data-i18n="nav_about">Chi Siamo</a></li>
+            <li><a href="#moduli" data-i18n="nav_forms">Moduli</a></li>
+            <li><a href="#novita" data-i18n="nav_news">Novità</a></li>
             <li><a href="#">Privacy Policy</a></li>
             <li><a href="#">Cookie Policy</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Contatti</h4>
+          <h4 data-i18n="nav_contact">Contatti</h4>
           <ul>
             <li>Via Balme, 21/A</li>
-            <li>10143 Torino</li>
+            <li data-i18n="v1_info2_p">10143 Torino</li>
             <li>011.742.8088</li>
             <li>info@caf-italia.it</li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 CAF-ITALIA.IT – Studio GA – P.Iva IT – Tutti i diritti riservati.</p>
+        <p data-i18n-html="v1_footer_copy">&copy; 2026 CAF-ITALIA.IT – Studio GA – P.Iva IT – Tutti i diritti riservati.</p>
       </div>
     </div>
   </footer>

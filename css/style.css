@@ -913,3 +913,50 @@ img { max-width: 100%; }
     justify-content: center;
   }
 }
+
+
+/* ============================================
+   Language Selector (IT / EN / TH)
+   ============================================ */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lang-toggle-btn {
+  background: rgba(26, 82, 118, 0.08);
+  border: 1px solid rgba(26, 82, 118, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 8px 12px;
+  min-height: 38px;
+  touch-action: manipulation;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  color: var(--primary);
+  font-family: var(--font);
+}
+
+.lang-toggle-btn:hover {
+  background: rgba(230, 126, 34, 0.12);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.lang-toggle-btn img {
+  width: 20px;
+  height: auto;
+  border-radius: 2px;
+  display: block;
+}
+
+.lang-toggle-btn span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
